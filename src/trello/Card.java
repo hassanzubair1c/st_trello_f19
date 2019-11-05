@@ -12,6 +12,7 @@ import java.util.Date;
  *
  * @author ubaidullah
  */
+
 public class Card {
 
     private ArrayList<CheckList> CheckListIncluded;
@@ -21,7 +22,7 @@ public class Card {
     private ArrayList<String> Comments;
     private String name;
 
-    public Card(String n, Date dd, String des) {
+    public Card(String n, Date dd, String des) {    
         CheckListIncluded = new ArrayList<CheckList>();
         MembersAssigned = new ArrayList<String>();
         Comments = new ArrayList<String>();
