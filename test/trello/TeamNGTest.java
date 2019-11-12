@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package trello;
-
 import java.util.ArrayList;
+import java.util.Date;
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -19,74 +20,77 @@ import org.testng.annotations.Test;
  */
 public class TeamNGTest {
     
+    private static Team test_team;
+    private static Card card;
+
+    
     public TeamNGTest() {
     }
 
+    //depend on card class constructor
+    //depend on List class constructor
+    //depend on Team class constructor
+    //depend on team class addList function
+    //depend on team class addUser function
+    //depend on card class addCard function
     @BeforeClass
     public static void setUpClass() throws Exception {
+       //mock users
+        
+        test_team=new Team("test");
+        test_team.adduser("hassan");
+        test_team.adduser("xbot");
+        //date for cards
+        Date date = new Date(); 
+        
+        //create mock cards and lists to initialize ListsIncluded member
+        Card c1=new Card("c1", date, "TESTING");
+        Card c2=new Card("c2", date, "TESTING");
+        List l1=new List("l1");
+        l1.addcard(c1);
+        l1.addcard(c2);
+        Card c3=new Card("c3", date, "TESTING");
+        Card c4=new Card("c4", date, "TESTING");
+        List l2=new List("l2");
+        l2.addcard(c3);
+        l2.addcard(c4);
+        test_team.addlist(l1);
+        test_team.addlist(l2);
+        
+        
+        
     }
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
-
-    /**
-     * Test of ispresentmember method, of class Team.
-     */
     @Test
     public void testIspresentmember() {
-        System.out.println("ispresentmember");
-        String x = "";
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.ispresentmember(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(test_team.ispresent("xbot"));
+        System.out.println("IsPresentMember");
+       
     }
 
-    /**
-     * Test of isprelist method, of class Team.
-     */
+    
     @Test
     public void testIsprelist() {
-        System.out.println("isprelist");
-        String x = "";
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.isprelist(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(test_team.isprelist("l2"));
+        System.out.println("IsPreList");
     }
 
-    /**
-     * Test of isprecard method, of class Team.
-     */
+    //DEPENDENT ON LIST.JAVA isprecard() FUNCTION
     @Test
     public void testIsprecard() {
+        
         System.out.println("isprecard");
-        String x = "";
-        String y = "";
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.isprecard(x, y);
+        String x = "l1";
+        String y = "c1";
+        boolean expResult = true;
+        boolean result = test_team.isprecard(x, y);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        
     }
 
-    /**
-     * Test of CreateList method, of class Team.
-     */
+//    *************************************STOP******************************************
+    /*
     @Test
     public void testCreateList() {
         System.out.println("CreateList");
@@ -98,9 +102,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getName method, of class Team.
-     */
+    
     @Test
     public void testGetName() {
         System.out.println("getName");
@@ -112,9 +114,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getLists method, of class Team.
-     */
+    
     @Test
     public void testGetLists() {
         System.out.println("getLists");
@@ -126,9 +126,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getmembers method, of class Team.
-     */
+    
     @Test
     public void testGetmembers() {
         System.out.println("getmembers");
@@ -140,9 +138,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of ispresent method, of class Team.
-     */
+    
     @Test
     public void testIspresent() {
         System.out.println("ispresent");
@@ -155,9 +151,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of adduser method, of class Team.
-     */
+    
     @Test
     public void testAdduser() {
         System.out.println("adduser");
@@ -168,9 +162,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of addlist method, of class Team.
-     */
+    
     @Test
     public void testAddlist() {
         System.out.println("addlist");
@@ -181,9 +173,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of InviteMember method, of class Team.
-     */
+    
     @Test
     public void testInviteMember() {
         System.out.println("InviteMember");
@@ -195,9 +185,7 @@ public class TeamNGTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of SearchCards method, of class Team.
-     */
+    
     @Test
     public void testSearchCards() {
         System.out.println("SearchCards");
@@ -208,5 +196,5 @@ public class TeamNGTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+  */
 }
