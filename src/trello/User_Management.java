@@ -65,28 +65,6 @@ public class User_Management {
         return flag;
     }
 
-    String getPassword(String x) {
-        String y = "";
-        for (int i = 0; i < UsersRegistered.size(); i++) {
-            if (UsersRegistered.get(i).getEmail().equals(x)) {
-                y = UsersRegistered.get(i).getPassword();
-                break;
-            }
-        }
-        return y;
-    }
-
-    String getUsername(String x) {
-        String y = "";
-        for (int i = 0; i < UsersRegistered.size(); i++) {
-            if (UsersRegistered.get(i).getEmail().equals(x)) {
-                y = UsersRegistered.get(i).getName();
-                break;
-            }
-        }
-        return y;
-    }
-
     boolean CheckLogin(String x, String y) {
         boolean flag = false;
         for (int i = 0; i < UsersRegistered.size(); i++) {
@@ -120,6 +98,39 @@ public class User_Management {
 
     public User_Management() {
         UsersRegistered = new ArrayList<User>();
+    }
+
+    public String getEmail(String x) {
+        String y = "";
+        for (int i = 0; i < UsersRegistered.size(); i++) {
+            if (UsersRegistered.get(i).getEmail().equals(x)) {
+                y = UsersRegistered.get(i).getEmail();
+                break;
+            }
+        }
+        return y;
+    }
+
+    public String getPassword(String x) {
+        String y = "";
+        for (int i = 0; i < UsersRegistered.size(); i++) {
+            if (UsersRegistered.get(i).getEmail().equals(x)) {
+                y = UsersRegistered.get(i).getPassword();
+                break;
+            }
+        }
+        return y;
+    }
+
+    public String getUsername(String x) {
+        String y = "";
+        for (int i = 0; i < UsersRegistered.size(); i++) {
+            if (UsersRegistered.get(i).getEmail().equals(x)) {
+                y = UsersRegistered.get(i).getName();
+                break;
+            }
+        }
+        return y;
     }
 
     public ArrayList<User> getUsersRegistered() {

@@ -6,64 +6,57 @@
 package trello;
 
 import java.util.ArrayList;
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
  *
- * @author Hassan X-BOT
+ * @author Momin
  */
 public class User_ManagementNGTest {
-    
+
+    private static User_Management um;
+
     public User_ManagementNGTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-    }
+        um = new User_Management();
+        User u1 = new User("momin", "123456", "momin.guner@gmail.com");
+        User u2 = new User("hassan", "123456", "hassan.guner@gmail.com");
+        um.AddUser(u1);
+        um.AddUser(u2);
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
     }
 
     /**
      * Test of getInstance method, of class User_Management.
      */
-    @Test
-    public void testGetInstance() {
-        System.out.println("getInstance");
-        User_Management expResult = null;
-        User_Management result = User_Management.getInstance();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+//    @Test
+//    public void testGetInstance() {
+//        System.out.println("getInstance");
+//        User_Management expResult = null;
+//        User_Management result = User_Management.getInstance();
+//        assertEquals(result, expResult);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     /**
      * Test of CheckEmail method, of class User_Management.
      */
     @Test
     public void testCheckEmail() {
         System.out.println("CheckEmail");
-        String x = "";
-        User_Management instance = new User_Management();
-        boolean expResult = false;
-        boolean result = instance.CheckEmail(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        Assert.assertTrue(um.CheckEmail("momin.guner@gmail.com"));
+
     }
 
     /**
@@ -71,14 +64,9 @@ public class User_ManagementNGTest {
      */
     @Test
     public void testCheckUsername() {
+
+        Assert.assertTrue(um.CheckUsername("momin"));
         System.out.println("CheckUsername");
-        String x = "";
-        User_Management instance = new User_Management();
-        boolean expResult = false;
-        boolean result = instance.CheckUsername(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -87,13 +75,12 @@ public class User_ManagementNGTest {
     @Test
     public void testGetPassword() {
         System.out.println("getPassword");
-        String x = "";
-        User_Management instance = new User_Management();
-        String expResult = "";
-        String result = instance.getPassword(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        String dummyPassword;
+        dummyPassword = um.getPassword("momin.guner@gmail.com");
+
+        Assert.assertTrue(dummyPassword.equals("123456"));
+
     }
 
     /**
@@ -102,13 +89,12 @@ public class User_ManagementNGTest {
     @Test
     public void testGetUsername() {
         System.out.println("getUsername");
-        String x = "";
-        User_Management instance = new User_Management();
-        String expResult = "";
-        String result = instance.getUsername(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        String dummyUserName;
+        dummyUserName = um.getUsername("momin.guner@gmail.com");
+
+        Assert.assertTrue(dummyUserName.equals("momin"));
+
     }
 
     /**
@@ -117,31 +103,45 @@ public class User_ManagementNGTest {
     @Test
     public void testCheckLogin() {
         System.out.println("CheckLogin");
-        String x = "";
-        String y = "";
-        User_Management instance = new User_Management();
-        boolean expResult = false;
-        boolean result = instance.CheckLogin(x, y);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of update method, of class User_Management.
-     */
+        String dummyPassword;
+        dummyPassword = um.getPassword("momin.guner@gmail.com");
+
+        String dummyUserName;
+        dummyUserName = um.getUsername("momin.guner@gmail.com");
+
+        Assert.assertFalse(um.CheckLogin(dummyUserName, dummyPassword));
+
+    }
+//
+//    /**
+//     * Test of update method, of class User_Management.
+//     */
+
     @Test
     public void testUpdate() {
-        System.out.println("update");
-        String em = "";
-        String nm = "";
-        String pw = "";
-        User_Management instance = new User_Management();
-        boolean expResult = false;
-        boolean result = instance.update(em, nm, pw);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        String dummyEmail;
+        dummyEmail = um.getEmail("momin.guner@gmail.com");
+        String newPass = "654321";
+        String newName = "nimom";
+
+        Assert.assertTrue(um.update(dummyEmail, newName, newPass));
+
+    }
+
+//    /**
+//     * Test of AddUser method, of class User_Management.
+//     */
+    @Test(dependsOnMethods = {"testCheckUsername"})
+    public void testAddUser() {
+        System.out.println("AddUser");
+
+        User u3 = new User("abdul", "123456", "abdul.guner@gmail.com");
+        um.AddUser(u3);
+
+        Assert.assertTrue(um.CheckUsername("abdul"));
+
     }
 
     /**
@@ -149,26 +149,20 @@ public class User_ManagementNGTest {
      */
     @Test
     public void testGetUsersRegistered() {
-        System.out.println("getUsersRegistered");
-        User_Management instance = new User_Management();
-        ArrayList expResult = null;
-        ArrayList result = instance.getUsersRegistered();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        int size = 2;
+        String name1 = "momin";
+        String name2 = "hassan";
+        boolean testPass = false;
+
+        if (um.getUsersRegistered().get(0).getName().equals(name1) && um.getUsersRegistered().get(1).getName().equals(name2) == true) {
+            testPass = true;
+        } else if (um.getUsersRegistered().get(0).getName().equals(name1) && um.getUsersRegistered().get(1).getName().equals(name2) == false) {
+            testPass = false;
+        }
+
+        Assert.assertTrue(testPass);
+
     }
 
-    /**
-     * Test of AddUser method, of class User_Management.
-     */
-    @Test
-    public void testAddUser() {
-        System.out.println("AddUser");
-        User u1 = null;
-        User_Management instance = new User_Management();
-        instance.AddUser(u1);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
