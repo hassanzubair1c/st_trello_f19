@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package trello;
+
 import java.util.ArrayList;
 import java.util.Date;
 import org.testng.Assert;
@@ -19,11 +20,10 @@ import org.testng.annotations.Test;
  * @author Hassan X-BOT
  */
 public class TeamNGTest {
-    
+
     private static Team test_team;
     private static Card card;
 
-    
     public TeamNGTest() {
     }
 
@@ -35,166 +35,133 @@ public class TeamNGTest {
     //depend on card class addCard function
     @BeforeClass
     public static void setUpClass() throws Exception {
-       //mock users
-        
-        test_team=new Team("test");
+        //mock users
+
+        test_team = new Team("test");
         test_team.adduser("hassan");
         test_team.adduser("xbot");
         //date for cards
-        Date date = new Date(); 
-        
+        Date date = new Date();
+
         //create mock cards and lists to initialize ListsIncluded member
-        Card c1=new Card("c1", date, "TESTING");
-        Card c2=new Card("c2", date, "TESTING");
-        List l1=new List("l1");
+        Card c1 = new Card("c1", date, "TESTING");
+        Card c2 = new Card("c2", date, "TESTING");
+        List l1 = new List("l1");
         l1.addcard(c1);
         l1.addcard(c2);
-        Card c3=new Card("c3", date, "TESTING");
-        Card c4=new Card("c4", date, "TESTING");
-        List l2=new List("l2");
+        Card c3 = new Card("c3", date, "TESTING");
+        Card c4 = new Card("c4", date, "TESTING");
+        List l2 = new List("l2");
         l2.addcard(c3);
         l2.addcard(c4);
         test_team.addlist(l1);
         test_team.addlist(l2);
-        
-        
-        
+
     }
 
     @Test
     public void testIspresentmember() {
-        Assert.assertTrue(test_team.ispresent("xbot"));
+        Assert.assertTrue(test_team.ispresentmember("xbot"));
+        Assert.assertFalse(test_team.ispresentmember("fail"));
         System.out.println("IsPresentMember");
-       
+
     }
 
-    
     @Test
     public void testIsprelist() {
         Assert.assertTrue(test_team.isprelist("l2"));
+        Assert.assertFalse(test_team.isprelist("fail"));
         System.out.println("IsPreList");
     }
 
     //DEPENDENT ON LIST.JAVA isprecard() FUNCTION
     @Test
     public void testIsprecard() {
-        
+
         System.out.println("isprecard");
         String x = "l1";
         String y = "c1";
+        //Assert true and false on every condition
         boolean expResult = true;
         boolean result = test_team.isprecard(x, y);
+        Assert.assertFalse(test_team.isprecard("fail", y));
+        Assert.assertFalse(test_team.isprecard(x, "fail"));
         assertEquals(result, expResult);
-        
-        
+
     }
 
-//    *************************************STOP******************************************
-    /*
-    @Test
-    public void testCreateList() {
-        System.out.println("CreateList");
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.CreateList();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Team instance = null;
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(test_team.getName().equals("test"));
+        Assert.assertFalse(test_team.getName().equals("xbot"));
     }
 
-    
+    //Dependent on List.java getname()
     @Test
     public void testGetLists() {
+        ArrayList<List> local = new ArrayList();
         System.out.println("getLists");
-        Team instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getLists();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean result = false, false_condition = true;
+
+        //test_team has two lists initialized (l1 & l2)
+        if (local.size() == 2 && local.get(0).getname().equals("l1") && local.get(1).getname().equals("l2"));
+        {
+            result = true;
+        }
+        if (local.size() == 5 && local.get(0).getname().equals("fail") && local.get(1).getname().equals("fail"));
+        {
+            false_condition = false;
+        }
+        Assert.assertTrue(result);
+        Assert.assertFalse(false_condition);
     }
 
-    
     @Test
     public void testGetmembers() {
         System.out.println("getmembers");
-        Team instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getmembers();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<String> local = new ArrayList();
+        boolean result = false, false_condition = true;
+
+        //test_team has two lists initialized (l1 & l2)
+        if (local.size() == 2 && local.get(0).equals("hassan") && local.get(1).equals("xbot"));
+        {
+            result = true;
+        }
+        if (local.size() == 5 && local.get(0).equals("fail") && local.get(1).equals("fail"));
+        {
+            false_condition = false;
+        }
+        Assert.assertTrue(result);
+        Assert.assertFalse(false_condition);
     }
 
-    
+    //redundant function with isMember()
     @Test
     public void testIspresent() {
         System.out.println("ispresent");
-        String x = "";
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.ispresent(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(test_team.ispresent("xbot"));
+        Assert.assertFalse(test_team.ispresent("fail"));
     }
 
-    
-    @Test
+    //donot run before other member dependent function 
+    //bcz adding a new member in it
+    @Test(dependsOnMethods = {"testIspresentmember"})
     public void testAdduser() {
         System.out.println("adduser");
-        String x = "";
-        Team instance = null;
-        instance.adduser(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        test_team.adduser("momin");
+        Assert.assertTrue(test_team.ispresentmember("xbot"));
+        Assert.assertFalse(test_team.ispresentmember("fail"));
+
     }
 
-    
-    @Test
+    @Test(dependsOnMethods = {"testIsprelist"})
     public void testAddlist() {
         System.out.println("addlist");
-        List l = null;
-        Team instance = null;
-        instance.addlist(l);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List local = new List("check");
+        test_team.addlist(local);
+        test_team.isprelist("check");
+        Assert.assertTrue(test_team.isprelist("check"));
+        Assert.assertFalse(test_team.isprelist("fail"));
     }
-
-    
-    @Test
-    public void testInviteMember() {
-        System.out.println("InviteMember");
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.InviteMember();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    
-    @Test
-    public void testSearchCards() {
-        System.out.println("SearchCards");
-        Team instance = null;
-        boolean expResult = false;
-        boolean result = instance.SearchCards();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-  */
 }

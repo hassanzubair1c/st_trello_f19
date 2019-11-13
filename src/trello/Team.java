@@ -50,6 +50,7 @@ public class Team {
         }
         return false;
     }
+//Not Required
 
     boolean CreateList() {
         boolean flag = false;
@@ -68,6 +69,7 @@ public class Team {
     public ArrayList<String> getmembers() {
         return AllUsers;
     }
+    //redundant function with isMember()
 
     public boolean ispresent(String x) {
         return AllUsers.contains(x);
@@ -80,12 +82,14 @@ public class Team {
     public void addlist(List l) {
         ListsIncluded.add(l);
     }
+//Not Required
 
     boolean InviteMember() {
         boolean flag = false;
 
         return flag;
     }
+//Not Required
 
     boolean SearchCards() {
         boolean flag = false;

@@ -146,6 +146,7 @@ public class Team_Management {
 
         return instance;
     }
+//required
 
     public ArrayList<String> getchecklist(String x, String x2, String x3) {
         ArrayList<String> y = new ArrayList<>();
@@ -166,6 +167,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<String> getitems(String x, String x2, String x3, String x4) {
         ArrayList<String> y = new ArrayList<>();
@@ -380,11 +382,13 @@ public class Team_Management {
 
         return instance;
     }
+//required
 
     public static void addTeam(String x) {
         Team t = new Team(x);
         TeamsMade.add(t);
     }
+//required
 
     public void addintoTeam(String x, String y) {
         int index = -1;
@@ -397,14 +401,17 @@ public class Team_Management {
             TeamsMade.get(index).adduser(y);
         }
     }
+//required
 
     public Team getTeam(int x) {
         return TeamsMade.get(x);
     }
+//required
 
     public static int gettotalteams() {
         return TeamsMade.size();
     }
+//required
 
     public int teamsjoined(String x) {
         int index = 0;
@@ -415,6 +422,7 @@ public class Team_Management {
         }
         return index;
     }
+//required
 
     public ArrayList<String> getmembers(String x) {
         ArrayList<String> y = new ArrayList<>();
@@ -425,6 +433,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<String> NamesListinteam(String x) {
         ArrayList<String> y = new ArrayList<>();
@@ -437,6 +446,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<String> NamesCardinlistinteam(String x, String x2) {
         ArrayList<String> y = new ArrayList<>();
@@ -453,6 +463,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<String> membersincardassigned(String x, String x2, String x3) {
         ArrayList<String> y = new ArrayList<>();
@@ -473,6 +484,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public void assignmember(String x, String x2, String x3, String x4) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -489,6 +501,7 @@ public class Team_Management {
             }
         }
     }
+//required
 
     public boolean ispresentinteam(String x, String x2) {
         boolean flag = false;
@@ -501,6 +514,7 @@ public class Team_Management {
 
         return flag;
     }
+//required
 
     public ArrayList<String> Namesteamsjoined(String x) {
         ArrayList<String> y = new ArrayList<>();
@@ -511,6 +525,7 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<String> NamesCardsAssigned(String x) {
         ArrayList<String> y = new ArrayList<>();
@@ -527,12 +542,14 @@ public class Team_Management {
         }
         return y;
     }
+//required
 
     public ArrayList<Team> getTeamsMade() {
         //return team for a particular user
 
         return TeamsMade;
     }
+//required
 
     public boolean ispresentteam(String x) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -542,6 +559,7 @@ public class Team_Management {
         }
         return false;
     }
+//required
 
     public boolean ispresentlist(String x, String y) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -553,6 +571,7 @@ public class Team_Management {
         }
         return false;
     }
+//required
 
     public boolean ispresentcard(String x, String y, String z) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -562,6 +581,7 @@ public class Team_Management {
         }
         return false;
     }
+//required
 
     public void addlist(String x, String y) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -572,6 +592,7 @@ public class Team_Management {
             }
         }
     }
+//required
 
     public void addcard(String x, String y, String z) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -586,6 +607,7 @@ public class Team_Management {
             }
         }
     }
+//required
 
     public void addchecklist(String x, String y, String z, String a) {
         for (int i = 0; i < TeamsMade.size(); i++) {
@@ -604,6 +626,7 @@ public class Team_Management {
             }
         }
     }
+//required
 
     public void additem(String x, String y, String z, String a, String b) {
         for (int i = 0; i < TeamsMade.size(); i++) {
