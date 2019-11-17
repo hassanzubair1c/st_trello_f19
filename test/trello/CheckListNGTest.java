@@ -5,6 +5,7 @@
  */
 package trello;
 
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -14,40 +15,26 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Hassan X-BOT
+ * @author A
  */
 public class CheckListNGTest {
     
+   private static CheckList test;
     public CheckListNGTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        test = new CheckList("hassan");
     }
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
-
-    /**
-     * Test of AddItem method, of class CheckList.
-     */
+      
     @Test
     public void testAddItem() {
         System.out.println("AddItem");
-        String x = "";
-        CheckList instance = null;
-        instance.AddItem(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        test.AddItem("test");
+        Assert.assertTrue(test.ItemsIncluded.size()==1&&test.ItemsIncluded.get(0).name=="test");
+        Assert.assertFalse(test.ItemsIncluded.size()==2&&test.ItemsIncluded.get(0).name=="fail");
     }
     
 }
