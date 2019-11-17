@@ -6,6 +6,8 @@
 package trello;
 
 import java.util.ArrayList;
+import java.util.Date;
+import org.testng.Assert;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -15,180 +17,79 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author Hassan X-BOT
+ * @author Saud
  */
 public class CardNGTest {
-    
+    private static Card card;
+    public ArrayList<CheckList> arr1;
+    public ArrayList<String> m1;
     public CardNGTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        Date date=new Date();
+       card=new Card("c1",date,"testing");
+       card.addmemberTocard("mem1");
+        
     }
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @BeforeMethod
-    public void setUpMethod() throws Exception {
-    }
-
-    @AfterMethod
-    public void tearDownMethod() throws Exception {
-    }
-
-    /**
-     * Test of addchecklisttocard method, of class Card.
-     */
+    
     @Test
     public void testAddchecklisttocard() {
         System.out.println("addchecklisttocard");
-        String x = "";
-        Card instance = null;
-        instance.addchecklisttocard(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        card.addchecklisttocard("ch1");
+        Assert.assertTrue(card.getchecklist().contains("ch1"));
+        Assert.assertFalse(card.getchecklist().contains("fail"));
     }
 
-    /**
-     * Test of getchecklist method, of class Card.
-     */
+   
     @Test
     public void testGetchecklist() {
         System.out.println("getchecklist");
-        Card instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getchecklist();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(card.getchecklist().size()==1&&card.getchecklist().contains("ch1"));
+        Assert.assertFalse(card.getchecklist().size()==2&&card.getchecklist().contains("fail"));
     }
 
-    /**
-     * Test of isassigned method, of class Card.
-     */
     @Test
     public void testIsassigned() {
         System.out.println("isassigned");
-        String x = "";
-        Card instance = null;
-        boolean expResult = false;
-        boolean result = instance.isassigned(x);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(card.isassigned("mem1"));
+        Assert.assertFalse(card.isassigned("fail"));
     }
 
-    /**
-     * Test of getchecklist2 method, of class Card.
-     */
+ 
     @Test
     public void testGetchecklist2() {
         System.out.println("getchecklist2");
-        Card instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getchecklist2();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        arr1= card.getchecklist2();
+        Assert.assertTrue(card.getchecklist2().size()==1 && arr1.get(0).name=="ch1");
+        Assert.assertFalse(card.getchecklist2().size()==2&&arr1.get(0).name=="fail");
     }
 
-    /**
-     * Test of AddCheckList method, of class Card.
-     */
-    @Test
-    public void testAddCheckList() {
-        System.out.println("AddCheckList");
-        Card instance = null;
-        boolean expResult = false;
-        boolean result = instance.AddCheckList();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getmembersassigned method, of class Card.
-     */
     @Test
     public void testGetmembersassigned() {
         System.out.println("getmembersassigned");
-        Card instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getmembersassigned();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        m1=card.getmembersassigned();
+         Assert.assertTrue(card.getmembersassigned().size()==1 && m1.contains("mem1"));
+        Assert.assertFalse(card.getmembersassigned().size()==2&& m1.contains("mem1"));
     }
 
-    /**
-     * Test of getname method, of class Card.
-     */
+   
     @Test
     public void testGetname() {
         System.out.println("getname");
-        Card instance = null;
-        String expResult = "";
-        String result = instance.getname();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(card.getname().equals("c1"));
+        Assert.assertFalse(card.getname().equals("fail"));
     }
 
-    /**
-     * Test of AddDueDate method, of class Card.
-     */
-    @Test
-    public void testAddDueDate() {
-        System.out.println("AddDueDate");
-        Card instance = null;
-        boolean expResult = false;
-        boolean result = instance.AddDueDate();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of AddDescription method, of class Card.
-     */
-    @Test
-    public void testAddDescription() {
-        System.out.println("AddDescription");
-        Card instance = null;
-        boolean expResult = false;
-        boolean result = instance.AddDescription();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addmemberTocard method, of class Card.
-     */
+ 
     @Test
     public void testAddmemberTocard() {
         System.out.println("addmemberTocard");
-        String x = "";
-        Card instance = null;
-        instance.addmemberTocard(x);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Assert.assertTrue(card.getmembersassigned().contains("mem1"));
+        Assert.assertFalse(card.getmembersassigned().contains("fail"));
     }
 
-    /**
-     * Test of AssignToMember method, of class Card.
-     */
-    @Test
-    public void testAssignToMember() {
-        System.out.println("AssignToMember");
-        Card instance = null;
-        boolean expResult = false;
-        boolean result = instance.AssignToMember();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
