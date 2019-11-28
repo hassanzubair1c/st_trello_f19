@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class CheckList {
 
-    ArrayList<Item> ItemsIncluded;
-    boolean Status;
+    ArrayList<Item> itemsIncluded;
+    boolean status;
     String name;
 
     public CheckList(String n) {
-        ItemsIncluded = new ArrayList<Item>();
-        Status = false;
+        itemsIncluded = new ArrayList<Item>();
+        status = false;
         name = n;
     }
 
-    void AddItem(String x) {
+    void addItem(String x) {
         Item i = new Item(x);
-        ItemsIncluded.add(i);
+        itemsIncluded.add(i);
     }
 
 }

@@ -49,22 +49,22 @@ public class User {
         this.email = email;
     }
     
-    boolean CreateTeam(){
-        boolean flag=false;
-        
-        
-        
-        return flag;
-    }
-    boolean ChangeAccountDetails(){
-        boolean flag=false;
-       
-        
-        return flag;
-    }
-    boolean ShowDashboard(){
-        boolean flag=false;
-        
-        return flag;
-    }
+//    boolean CreateTeam(){
+//        boolean flag=false;
+//        
+//        
+//        
+//        return flag;
+//    }
+//    boolean ChangeAccountDetails(){
+//        boolean flag=false;
+//       
+//        
+//        return flag;
+//    }
+//    boolean ShowDashboard(){
+//        boolean flag=false;
+//        
+//        return flag;
+//    }
 }

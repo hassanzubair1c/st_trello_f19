@@ -30,11 +30,11 @@ public class CheckListNGTest {
 
       
     @Test
-    public void testAddItem() {
-        System.out.println("AddItem");
-        test.AddItem("test");
-        Assert.assertTrue(test.ItemsIncluded.size()==1&&test.ItemsIncluded.get(0).name=="test");
-        Assert.assertFalse(test.ItemsIncluded.size()==2&&test.ItemsIncluded.get(0).name=="fail");
+    public void testaddItem() {
+        System.out.println("addItem");
+        test.addItem("test");
+        Assert.assertTrue(test.itemsIncluded.size()==1&&test.itemsIncluded.get(0).name.equals("test"));
+        Assert.assertFalse(test.itemsIncluded.size()==2&&test.itemsIncluded.get(0).name.equals("fail"));
     }
     
 }
