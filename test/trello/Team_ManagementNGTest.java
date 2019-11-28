@@ -44,11 +44,11 @@ public class Team_ManagementNGTest {
         tmm.addcard("team1", "list1", "card1");
         tmm.addchecklist("team1", "list1", "card1", "checklist1");
        
-        User u1 = new User("momin", "123456","momin.guner@gmail.com");
-        User u2 = new User("hassan", "123456","hassan.guner@gmail.com");
-        Card c1 = new Card("c1");
-        List l1 = new List("list1");
-         CheckList CL1 = new CheckList("clist1");
+//        User u1 = new User("momin", "123456","momin.guner@gmail.com");
+//        User u2 = new User("hassan", "123456","hassan.guner@gmail.com");
+//        Card c1 = new Card("c1");
+//        List l1 = new List("list1");
+//         CheckList CL1 = new CheckList("clist1");
         //xbot
         card=new Card("c1",date,"testing");
         card.addchecklisttocard("cl1");

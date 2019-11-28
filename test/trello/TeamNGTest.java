@@ -105,11 +105,11 @@ public class TeamNGTest {
         boolean result = false, false_condition = true;
 
         //test_team has two lists initialized (l1 & l2)
-        if (local.size() == 2 && local.get(0).getname().equals("l1") && local.get(1).getname().equals("l2"));
+        if (local.size() == 2 && local.get(0).getname().equals("l1") && local.get(1).getname().equals("l2"))
         {
             result = true;
         }
-        if (local.size() == 5 && local.get(0).getname().equals("fail") && local.get(1).getname().equals("fail"));
+        if (local.size() == 5 && local.get(0).getname().equals("fail") && local.get(1).getname().equals("fail"))
         {
             false_condition = false;
         }
@@ -124,11 +124,11 @@ public class TeamNGTest {
         boolean result = false, false_condition = true;
 
         //test_team has two lists initialized (l1 & l2)
-        if (local.size() == 2 && local.get(0).equals("hassan") && local.get(1).equals("xbot"));
+        if (local.size() == 2 && local.get(0).equals("hassan") && local.get(1).equals("xbot"))
         {
             result = true;
         }
-        if (local.size() == 5 && local.get(0).equals("fail") && local.get(1).equals("fail"));
+        if (local.size() == 5 && local.get(0).equals("fail") && local.get(1).equals("fail"))
         {
             false_condition = false;
         }
