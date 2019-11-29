@@ -14,37 +14,32 @@ import java.util.Date;
  */
 public class Card {
 
-    private ArrayList<CheckList> CheckListIncluded;
-    public ArrayList<String> MembersAssigned;
-    private Date DueDate;
-    private String Description;
-    private ArrayList<String> Comments;
+    private ArrayList<CheckList> checkListIncluded;
+    public ArrayList<String> membersAssigned;
+
     private String name;
 
     public Card(String n, Date dd, String des) {
-        CheckListIncluded = new ArrayList<CheckList>();
-        MembersAssigned = new ArrayList<String>();
-        Comments = new ArrayList<String>();
-        DueDate = dd;
-        Description = des;
+        checkListIncluded = new ArrayList<CheckList>();
+        membersAssigned = new ArrayList<String>();
         name = n;
     }
 
     public Card(String n) {
-        CheckListIncluded = new ArrayList<CheckList>();
-        MembersAssigned = new ArrayList<String>();
+        checkListIncluded = new ArrayList<CheckList>();
+        membersAssigned = new ArrayList<String>();
         name = n;
     }
 
     public void addchecklisttocard(String x) {
         CheckList cl = new CheckList(x);
-        CheckListIncluded.add(cl);
+        checkListIncluded.add(cl);
     }
 
     public ArrayList<String> getchecklist() {
         ArrayList<String> c1 = new ArrayList<>();
-        for (int i = 0; i < CheckListIncluded.size(); i++) {
-            c1.add(CheckListIncluded.get(i).name);
+        for (int i = 0; i < checkListIncluded.size(); i++) {
+            c1.add(checkListIncluded.get(i).name);
         }
 
         return c1;
@@ -52,8 +47,8 @@ public class Card {
 
     boolean isassigned(String x) {
         boolean flag = false;
-        for (int i = 0; i < MembersAssigned.size(); i++) {
-            if (MembersAssigned.get(i).equals(x)) {
+        for (int i = 0; i < membersAssigned.size(); i++) {
+            if (membersAssigned.get(i).equals(x)) {
                 flag = true;
                 break;
             }
@@ -62,40 +57,40 @@ public class Card {
     }
 
     public ArrayList<CheckList> getchecklist2() {
-        return CheckListIncluded;
+        return checkListIncluded;
     }
 
-    boolean AddCheckList() {
+    boolean addCheckList() {
         boolean flag = false;
 
         return flag;
     }
 
     public ArrayList<String> getmembersassigned() {
-        return MembersAssigned;
+        return membersAssigned;
     }
 
-    public String getname() {
+    public String getCardName() {
         return name;
     }
 
-    boolean AddDueDate() {
+    boolean addDueDate() {
         boolean flag = false;
 
         return flag;
     }
 
-    boolean AddDescription() {
+    boolean addDescription() {
         boolean flag = false;
 
         return flag;
     }
 
     public void addmemberTocard(String x) {
-        MembersAssigned.add(x);
+        membersAssigned.add(x);
     }
 
-    boolean AssignToMember() {
+    boolean assignToMember() {
         boolean flag = false;
 
         return flag;

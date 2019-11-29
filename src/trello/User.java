@@ -6,7 +6,7 @@
 package trello;
 
 /**
- *
+ *  
  * @author ubaidullah
  */
 public class User {
