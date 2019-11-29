@@ -13,17 +13,17 @@ import java.util.ArrayList;
  */
 public class List {
 
-    public ArrayList<Card> CardsIncluded;
+    public ArrayList<Card> cardsIncluded;
     private String name;
 
     public List(String n) {
-        CardsIncluded = new ArrayList<Card>();
+        cardsIncluded = new ArrayList<Card>();
         name = n;
     }
 
     boolean isprescard(String x) {
-        for (int i = 0; i < CardsIncluded.size(); i++) {
-            if (CardsIncluded.get(i).getname().equals(x)) {
+        for (int i = 0; i < cardsIncluded.size(); i++) {
+            if (cardsIncluded.get(i).getname().equals(x)) {
                 return true;
             }
         }
@@ -35,23 +35,23 @@ public class List {
     }
 
     public ArrayList<Card> getcards() {
-        return CardsIncluded;
+        return cardsIncluded;
     }
 
     void addcard(Card c) {
-        CardsIncluded.add(c);
+        cardsIncluded.add(c);
     }
 
-    boolean CreateCard() {
-        boolean flag = false;
+//    boolean CreateCard() {
+//        boolean flag = false;
+//
+//        return flag;
+//    }
 
-        return flag;
-    }
-
-    boolean MoveCard() {
-        boolean flag = false;
-
-        return flag;
-    }
+//    boolean MoveCard() {
+//        boolean flag = false;
+//
+//        return flag;
+//    }
 
 }
